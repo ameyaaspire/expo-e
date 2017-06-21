@@ -1,36 +1,6 @@
-# Exponential-e developer technical challenge
+The Sample Project is implemented using angular 1.6.4 and node v5.4.0 and mongoDB is used as Database.
 
-We're hoping to see how you approach a challenge and what sort of standards you use in your code so please feel free to be as creative as you like.
+Gulp is used to perform some prebuild,build and postbuild tasks that include linting js, minify and concat the js files and populate Sample MongoDB database.
 
-The job spec will help you understand what we'd like to see.
+Mocha is used for testing the nodejs api.
 
-## Dependencies
-* NPM / Yarn
-## Instructions
-From the project root folder:
-```
-$ npm install
-```
-OR
-```
-$ yarn
-```
-Then it's over to you!
-
-**Please demonstrate:**
-* Selecting suppliers and products in the drop-downs
-* A round-trip to a server pulling back prices
-* Displaying the returned data in the grid
-* Anything else you'd like to show us
-
-### Sample data
-
-| Supplier    | Product      | Price (£) |
-| ------------|--------------|-----------|
-| New Co Ltd  | Small wongle | 5         |
-| New Co Ltd  | Large wongle | 8         |
-| New Co Ltd  | Super wongle | 12        |
-| Old Co Ltd  | Mini wongle  | 4         |
-| Old Co Ltd  | Small wongle | 6         |
-| Old Co Ltd  | Large wongle | 9         |
-| Old Co Ltd  | Super wongle | 13        |
