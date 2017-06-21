@@ -12,12 +12,8 @@ angular.module('expoApp', ['ui.router','HomeCtrl','ExpoService'])
 });
 angular.module('HomeCtrl', []).controller('HomeController', ['$scope', 'Expo', function($scope, Expo) {
 
-    $scope.products = ['--product--', 'Small wongle', 'Large wongle', 'Super wongle', 'Mini wongle'];
-    $scope.suppliers = ['New Co Ltd', 'Old Co Ltd'];
-    $scope.product = $scope.products[0];
-    $scope.supplier = $scope.suppliers[0];
     $scope.getProductDetail = function() {
-        Expo.getProductPrice($scope.supplier, $scope.product).then(function(response) {
+        Expo.getProductPrice($scope.supplier.name, $scope.product.product).then(function(response) {
             if (response.data.product !== null) {
                 $scope.showDetails = true;
                 $scope.productInfo = response.data.product;
@@ -31,15 +27,27 @@ angular.module('HomeCtrl', []).controller('HomeController', ['$scope', 'Expo', f
     $scope.getSupplierList = function() {
         Expo.getSupplierList().then(function(response) {
             if (response.data.suppliers !== null) {
-                console.log(response.data.suppliers);
+                $scope.suppliers = response.data.suppliers;
+                $scope.supplier = $scope.suppliers[0];
+                $scope.getProductList();
             } else {
                 console.log("nothing")
             }
         }, function(response) {
-            alert("Some Error Occured In fetching Data",response);
+            alert("Some Error Occured In fetching Data");
         });
     };
-    console.log("asdfsdfsd")
+    $scope.getProductList = function(){
+        Expo.getProductList($scope.supplier.name).then(function(response){
+            console.log(response.data.products);
+            $scope.products = response.data.products;
+            $scope.product = response.data.products[0];
+            $scope.getProductDetail(); 
+        },function(response){
+            alert("Some Error Occured In fetching Data")
+        })
+    } 
+
     $scope.getSupplierList();
 //end of controllers    
 }]);
