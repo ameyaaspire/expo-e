@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h1 class="page-header">
+                Product pricing
+            </h1>
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="selSupplier">
+                            Supplier
+                        </label>
+                        <select class="form-control" ng-change="getProductList()" ng-model="supplier" ng-options="x.name for x in suppliers">
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="selProduct">
+                            Product
+                        </label>
+                        <select class="form-control" ng-change="getProductDetail()" ng-model="product" ng-options="x.product for x in products">
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <h2 class="sub-header">
+                Product details
+            </h2>
+            <div class="table-responsive">
+                <table class="table table-striped" ng-show="showDetails">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Supplier
+                            </th>
+                            <th>
+                                Product
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                {{productInfo.supplier}}
+                            </td>
+                            <td>
+                                {{productInfo.product}}
+                            </td>
+                            <td>
+                                {{productInfo.price}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-show="!showDetails">
+                	<p>No Details Found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
